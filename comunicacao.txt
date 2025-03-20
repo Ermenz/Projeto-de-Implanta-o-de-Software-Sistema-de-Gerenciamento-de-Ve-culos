@@ -1,0 +1,2 @@
+Vamos utilizar html,css e JavaScript e talves python. 
+Utilizaresmos mysql do próprio vscode.
