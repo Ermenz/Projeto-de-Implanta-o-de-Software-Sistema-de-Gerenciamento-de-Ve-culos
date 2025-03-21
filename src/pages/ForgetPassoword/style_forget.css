@@ -1,6 +1,7 @@
-/* css de containers e responsibidade */
-
 body {
+
+    /*parte de fora*/
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,19 +13,21 @@ body {
 }
 
 .logo {
-    margin-top: -200px;
-    width: 200px; /* Ajuste conforme necessário */
+    margin-top: -120px;
+    width: 200px; 
     height: auto;
 }
 
-.login-container {
+/*container esqueci senha*/
+
+.forget-passoword-container {
     background: #3a3a3a;
     padding: 30px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(92, 51, 51, 0.5);
     text-align: center;
     width: 400px;
-    margin-top: 40px; /* Distância do topo */
+    margin-top: 40px;
 }
 
 h2 {
@@ -39,6 +42,7 @@ h2 {
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 15px;
+    width: 100%;
 }
 
 .input-group i {
@@ -51,92 +55,76 @@ h2 {
     background: transparent;
     outline: none;
     color: white;
-    width: 100%;
-}
-
-::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-button {
-    width: 100%;
+    width: 75%;
     padding: 10px;
+}
+
+.input-group button {
     border: none;
-    border-radius: 5px;
     background: #ff6600;
     color: white;
-    font-size: 16px;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-left: 10px;
 }
 
-button:hover {
+.input-group button:hover {
     background: #cc5200;
 }
 
-.register-text {
+.success-message {
+    color: #ff6600;
     margin-top: 15px;
+    font-size: 16px;
+    display: block;
+}
+
+.back-button {
+    margin-top: 20px;
+    padding: 10px 10px;
+    background: #333;
     color: white;
-}
-
-.register-text a {
-    color: #ff6600;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
     text-decoration: none;
-    font-weight: bold;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
 }
 
-.register-text a:hover {
-    text-decoration: underline;
+.back-button:hover {
+    background: #555;
 }
 
-/* Senha" */
-.forgot-password {
-    margin-top: 10px;
-    color: white;
-}
 
-.forgot-password a {
-    color: #ff6600;
-    text-decoration: none;
-    font-weight: bold;
-}
 
-.forgot-password a:hover {
-    text-decoration: underline;
-}
 
-/* Links no rodapé */
-.footer-links {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    gap: 20px;
-}
+/*Responsividade para telas mobile*/
 
-.footer-links a {
-    color: white;
-    text-decoration: none;
-    font-size: 14px;
-}
-
-.footer-links a:hover {
-    text-decoration: underline;
-}
-
-/* Responsividade para mobile */
 @media (max-width: 600px) {
-    .login-container {
+    .forget-passoword-container {
         width: 90%;
         padding: 20px;
     }
 
     .logo {
-        width: 100px; /* Ajuste para telas menores */
+        width: 100px; 
     }
 
     h2 {
         font-size: 18px;
     }
 
-    
+    .input-group button {
+        font-size: 14px;
+        padding: 12px;
+    }
+
+    .back-button {
+        padding: 12px;
+    }
 }
