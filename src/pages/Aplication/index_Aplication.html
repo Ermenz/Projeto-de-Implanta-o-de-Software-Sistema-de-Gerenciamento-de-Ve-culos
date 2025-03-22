@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Veículos</title>
+    <link rel="stylesheet" href="/src/pages/Aplication/Style_Aplication.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Cadastro de Veículos</h2>
+        <form id="vehicleForm">
+            <input type="text" id="placa" placeholder="Placa" required>
+            <input type="text" id="marca" placeholder="Marca" required>
+            <input type="text" id="modelo" placeholder="Modelo" required>
+            <input type="number" id="ano" placeholder="Ano" required>
+            <button type="submit">Cadastrar</button>
+        </form>
+        <ul id="vehicleList"></ul>
+    </div>
+    <script src="/src/services/script_Aplication.js"></script>
+</body>
+</html>
