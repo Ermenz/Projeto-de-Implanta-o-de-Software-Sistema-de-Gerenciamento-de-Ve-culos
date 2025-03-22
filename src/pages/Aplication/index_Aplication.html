@@ -1,23 +1,155 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Veículos</title>
     <link rel="stylesheet" href="/src/pages/Aplication/Style_Aplication.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
     <div class="container">
         <h2>Cadastro de Veículos</h2>
-        <form id="vehicleForm">
-            <input type="text" id="placa" placeholder="Placa" required>
-            <input type="text" id="marca" placeholder="Marca" required>
-            <input type="text" id="modelo" placeholder="Modelo" required>
-            <input type="number" id="ano" placeholder="Ano" required>
-            <button type="submit">Cadastrar</button>
+        <form id="formVeiculo" method="POST">
+            <div class="input-group">
+                <i class="fas fa-car"></i>
+                <input type="text" id="marca" name="marca" placeholder="Marca do Veículo" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-cogs"></i>
+                <input type="text" id="modelo" name="modelo" placeholder="Modelo do Veículo" required>
+            </div>
+            <div class="input-group">
+                <i class="fas fa-calendar-alt"></i>
+                <input type="number" id="ano" name="ano" placeholder="Ano do Veículo" required>
+            </div>
+            <button type="button" onclick="adicionarCarro()">Cadastrar</button>
         </form>
-        <ul id="vehicleList"></ul>
+
+        <div class="action-buttons">
+            <button class="action-btn" onclick="listarCarros()">
+                <i class="fas fa-list"></i> Listar Carros
+            </button>
+            <button class="action-btn" onclick="alterarCarros()">
+                <i class="fas fa-edit"></i> Alterar Carros
+            </button>
+            <button class="action-btn" onclick="removerCarros()">
+                <i class="fas fa-trash-alt"></i> Remover Carros
+            </button>
+        </div>
+
+        <!-- Lista de carros exibida -->
+        <div id="lista-carros"></div>
     </div>
-    <script src="/src/services/script_Aplication.js"></script>
+
+    <script>
+        let carros = [];
+
+        // Função para adicionar um carro
+        function adicionarCarro() {
+            const marca = document.getElementById("marca").value;
+            const modelo = document.getElementById("modelo").value;
+            const ano = document.getElementById("ano").value;
+
+            // Verificar se todos os campos foram preenchidos
+            if (!marca || !modelo || !ano) {
+                alert("Todos os campos devem ser preenchidos!");
+                return;
+            }
+
+            // Adicionar o carro no array
+            carros.push({ marca, modelo, ano });
+
+            // Limpar os campos após adicionar
+            document.getElementById("marca").value = '';
+            document.getElementById("modelo").value = '';
+            document.getElementById("ano").value = '';
+
+            alert("Carro cadastrado com sucesso!");
+            listarCarros(); // Atualiza a lista de carros
+        }
+
+        // Função para listar os carros
+        function listarCarros() {
+            const listaCarros = document.getElementById("lista-carros");
+            listaCarros.innerHTML = ''; // Limpar a lista atual
+
+            // Verificar se há carros cadastrados
+            if (carros.length === 0) {
+                listaCarros.innerHTML = '<p>Nenhum carro cadastrado.</p>';
+                return;
+            }
+
+            // Adicionar cada carro na lista
+            carros.forEach((carro, index) => {
+                const divCarro = document.createElement("div");
+                divCarro.classList.add("carro");
+                divCarro.innerHTML = `
+                    <p>Marca: ${carro.marca}, Modelo: ${carro.modelo}, Ano: ${carro.ano}</p>
+                    <button onclick="editarCarro(${index})">Alterar</button>
+                    <button onclick="removerCarro(${index})">Remover</button>
+                `;
+                listaCarros.appendChild(divCarro);
+            });
+        }
+
+        // Função para alterar um carro
+        function editarCarro(index) {
+            const carro = carros[index];
+            document.getElementById("marca").value = carro.marca;
+            document.getElementById("modelo").value = carro.modelo;
+            document.getElementById("ano").value = carro.ano;
+
+            // Alterar a função do botão "Cadastrar" para "Atualizar"
+            const btnCadastrar = document.querySelector("button");
+            btnCadastrar.innerHTML = "Atualizar";
+            btnCadastrar.setAttribute("onclick", `atualizarCarro(${index})`);
+        }
+
+        // Função para atualizar um carro
+        function atualizarCarro(index) {
+            const marca = document.getElementById("marca").value;
+            const modelo = document.getElementById("modelo").value;
+            const ano = document.getElementById("ano").value;
+
+            // Verificar se os campos estão preenchidos
+            if (!marca || !modelo || !ano) {
+                alert("Todos os campos devem ser preenchidos!");
+                return;
+            }
+
+            // Atualizar os dados do carro
+            carros[index] = { marca, modelo, ano };
+
+            // Limpar os campos
+            document.getElementById("marca").value = '';
+            document.getElementById("modelo").value = '';
+            document.getElementById("ano").value = '';
+
+            // Alterar o botão para "Cadastrar" novamente
+            const btnCadastrar = document.querySelector("button");
+            btnCadastrar.innerHTML = "Cadastrar";
+            btnCadastrar.setAttribute("onclick", "adicionarCarro()");
+
+            alert("Carro atualizado com sucesso!");
+            listarCarros(); // Atualiza a lista
+        }
+
+        // Função para remover um carro
+        function removerCarro(index) {
+            if (confirm("Tem certeza que deseja remover este carro?")) {
+                carros.splice(index, 1); // Remover o carro
+                listarCarros(); // Atualiza a lista
+                alert("Carro removido com sucesso!");
+            }
+        }
+    </script>
+
+    <script src="/src/js/script.js"></script>
+
+
+
+
 </body>
 </html>

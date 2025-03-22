@@ -1,56 +1,114 @@
+/* CSS geral para a tela de cadastro */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(to top, #000000, #ff6600); /* Gradiente vertical de preto para laranja */
+    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    color: white;
     margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* A altura da tela será 100% da altura da janela */
+    height: 100vh;
 }
 
 .container {
-    background: #3a3a3a; /* Cor de fundo do container */
-    padding: 40px; /* Aumentando o padding para mais espaço dentro do container */
+    background: #3a3a3a;
+    padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(500, 500, 24, 0.5); /* Efeito de sombra */
-    width: 500px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    width: 400px;
     text-align: center;
-    display: flex;
-    flex-direction: column; /* Para separar os campos */
-    gap: 25px; /* Aumentando o espaçamento entre os campos */
 }
 
 h2 {
-    color: white; /* Cor do texto do título */
     margin-bottom: 20px;
+    color: #ff6600;
 }
 
-input {
-    width: 80%;
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #555;
     padding: 10px;
-    margin: 10px 0; /* Aumentando a margem dos campos para separar mais */
-    border: 1px solid #ccc; /* Borda para o campo de entrada */
-    background: white; /* Fundo branco para o campo de entrada */
-    color: black; /* Texto preto no campo de entrada */
-    outline: none;
     border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.input-group i {
+    color: white;
+    margin-right: 10px;
+}
+
+.input-group input {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: white;
+    width: 100%;
+    padding: 5px;
+}
+
+::placeholder {
+    color: rgba(255, 255, 255, 0.7);
 }
 
 button {
-    background: #ff6600; /* Cor de fundo do botão */
-    color: white;
+    width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
+    background: #ff6600;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+button:hover {
+    background: #cc5200;
+}
+
+/* Botões para Listar, Alterar, Remover */
+.action-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #ff6600;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
     width: 100%;
 }
 
-button:hover {
-    background: #cc5200; /* Cor do botão ao passar o mouse */
+.action-btn i {
+    margin-right: 10px;
 }
 
-::placeholder {
-    color: rgba(0, 0, 0, 0.6); /* Cor do placeholder (texto dentro do campo de entrada) */
+.action-btn:hover {
+    background: #cc5200;
+}
+
+/* Responsividade para mobile */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .action-btn {
+        font-size: 14px;
+    }
 }
