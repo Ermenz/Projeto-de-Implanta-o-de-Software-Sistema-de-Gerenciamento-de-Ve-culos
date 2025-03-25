@@ -1,42 +1,18 @@
-// Array para armazenar os carros cadastrados (simulação de um banco de dados)
 let carros = [];
 
-// Função para listar os carros
-function listarCarros() {
-    const listaCarros = document.getElementById("lista-carros"); // Elemento onde a lista de carros será exibida
-    listaCarros.innerHTML = ''; // Limpar a lista antes de adicionar novos carros
-
-    // Verificar se há carros cadastrados
-    if (carros.length === 0) {
-        listaCarros.innerHTML = '<p>Nenhum carro cadastrado.</p>';
-    } else {
-        // Exibir a lista de carros
-        carros.forEach((carro, index) => {
-            const divCarro = document.createElement("div");
-            divCarro.classList.add("carro");
-            divCarro.innerHTML = `
-                <p>Marca: ${carro.marca}, Modelo: ${carro.modelo}, Ano: ${carro.ano}</p>
-                <button onclick="alterarCarro(${index})">Alterar</button>
-                <button onclick="removerCarro(${index})">Remover</button>
-            `;
-            listaCarros.appendChild(divCarro);
-        });
-    }
-}
-
-// Função para adicionar um novo carro
+// Função para adicionar um carro
 function adicionarCarro() {
     const marca = document.getElementById("marca").value;
     const modelo = document.getElementById("modelo").value;
     const ano = document.getElementById("ano").value;
 
-    // Verificar se os campos estão preenchidos
+    // Verificar se todos os campos foram preenchidos
     if (!marca || !modelo || !ano) {
-        alert("Preencha todos os campos!");
+        alert("Todos os campos devem ser preenchidos!");
         return;
     }
 
-    // Adicionar carro no array
+    // Adicionar o carro no array
     carros.push({ marca, modelo, ano });
 
     // Limpar os campos após adicionar
@@ -44,23 +20,45 @@ function adicionarCarro() {
     document.getElementById("modelo").value = '';
     document.getElementById("ano").value = '';
 
-    // Atualizar a lista de carros
-    listarCarros();
+    alert("Carro cadastrado com sucesso!");
+    listarCarros(); // Atualiza a lista de carros
 }
 
-// Função para alterar os dados de um carro
-function alterarCarro(index) {
+// Função para listar os carros
+function listarCarros() {
+    const listaCarros = document.getElementById("lista-carros");
+    listaCarros.innerHTML = ''; // Limpar a lista atual
+
+    // Verificar se há carros cadastrados
+    if (carros.length === 0) {
+        listaCarros.innerHTML = '<p>Nenhum carro cadastrado.</p>';
+        return;
+    }
+
+    // Adicionar cada carro na lista
+    carros.forEach((carro, index) => {
+        const divCarro = document.createElement("div");
+        divCarro.classList.add("carro");
+        divCarro.innerHTML = `
+            <p>Marca: ${carro.marca}, Modelo: ${carro.modelo}, Ano: ${carro.ano}</p>
+            <button onclick="editarCarro(${index})">Alterar</button>
+            <button onclick="removerCarro(${index})">Remover</button>
+        `;
+        listaCarros.appendChild(divCarro);
+    });
+}
+
+// Função para alterar um carro
+function editarCarro(index) {
     const carro = carros[index];
-    
-    // Preencher os campos com os dados do carro
     document.getElementById("marca").value = carro.marca;
     document.getElementById("modelo").value = carro.modelo;
     document.getElementById("ano").value = carro.ano;
 
-    // Alterar o botão de adicionar para "Atualizar"
-    const btnAdicionar = document.getElementById("btn-adicionar");
-    btnAdicionar.innerText = "Atualizar";
-    btnAdicionar.setAttribute("onclick", `atualizarCarro(${index})`);
+    // Alterar a função do botão "Cadastrar" para "Atualizar"
+    const btnCadastrar = document.querySelector("button");
+    btnCadastrar.innerHTML = "Atualizar";
+    btnCadastrar.setAttribute("onclick", `atualizarCarro(${index})`);
 }
 
 // Função para atualizar um carro
@@ -71,31 +69,32 @@ function atualizarCarro(index) {
 
     // Verificar se os campos estão preenchidos
     if (!marca || !modelo || !ano) {
-        alert("Preencha todos os campos!");
+        alert("Todos os campos devem ser preenchidos!");
         return;
     }
 
     // Atualizar os dados do carro
     carros[index] = { marca, modelo, ano };
 
-    // Limpar os campos e voltar o botão para "Adicionar"
+    // Limpar os campos
     document.getElementById("marca").value = '';
     document.getElementById("modelo").value = '';
     document.getElementById("ano").value = '';
-    const btnAdicionar = document.getElementById("btn-adicionar");
-    btnAdicionar.innerText = "Adicionar";
-    btnAdicionar.setAttribute("onclick", "adicionarCarro()");
 
-    // Atualizar a lista de carros
-    listarCarros();
+    // Alterar o botão para "Cadastrar" novamente
+    const btnCadastrar = document.querySelector("button");
+    btnCadastrar.innerHTML = "Cadastrar";
+    btnCadastrar.setAttribute("onclick", "adicionarCarro()");
+
+    alert("Carro atualizado com sucesso!");
+    listarCarros(); // Atualiza a lista
 }
 
 // Função para remover um carro
 function removerCarro(index) {
-    // Confirmar se o usuário realmente deseja excluir
     if (confirm("Tem certeza que deseja remover este carro?")) {
-        // Remover o carro do array
-        carros.splice(index, 1);
-        listarCarros();
+        carros.splice(index, 1); // Remover o carro
+        listarCarros(); // Atualiza a lista
+        alert("Carro removido com sucesso!");
     }
 }

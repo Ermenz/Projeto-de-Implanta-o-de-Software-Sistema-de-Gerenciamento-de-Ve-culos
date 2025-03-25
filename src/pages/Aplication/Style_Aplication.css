@@ -1,159 +1,179 @@
-/* CSS geral para a tela de cadastro */
+/* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
-    color: white;
+    background: linear-gradient(135deg, #000000, #1a1a1a, #2c2c2c); /* Gradiente preto no fundo */
     margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    padding: 0;
+    position: relative;
 }
 
-/* Container principal */
-.container {
-    background: #3a3a3a;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.6);
-    width: 90%;
-    max-width: 900px; /* Aumentei o tamanho do container */
-    display: flex;
-    flex-direction: column; /* Agora o título fica no topo */
-    align-items: center;
-}
-
-/* Título */
-h2 {
-    color: #ff6600;
-    font-size: 24px;
-    margin-bottom: 20px;
-}
-
-/* Área do formulário */
-.form-container {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 100%;
-}
-
-
-/* Ícone de saída no canto superior esquerdo */
+/* Ícone de sair */
 .exit-icon {
     position: absolute;
     top: 20px;
     left: 20px;
-    font-size: 28px;
-    color: #ff6600; /* Laranja */
+    font-size: 24px;
+    color: white;
     text-decoration: none;
-    transition: transform 0.2s ease-in-out;
+    background-color: transparent;
+    transition: color 0.3s ease-in-out;
 }
 
 .exit-icon:hover {
-    transform: scale(1.1);
-    color: #cc5200; /* Laranja mais escuro ao passar o mouse */
+    color: #ffcc00;
 }
 
+/* Container principal */
+.container {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #1a1a1a; /* Tom de preto mais suave */
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6);
+}
 
-/* Campos de entrada */
+/* Borda sutil para destaque */
+.container::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 12px;
+    padding: 3px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    -webkit-mask: 
+        linear-gradient(white 0 0) content-box, 
+        linear-gradient(white 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+}
+
+/* Títulos */
+h2 {
+    text-align: center;
+    color: #FFD700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilo para o formulário */
 .input-group {
+    margin-bottom: 15px;
     display: flex;
     align-items: center;
-    background: #555;
-    padding: 12px;
-    border-radius: 5px;
-    margin-bottom: 20px; /* Aumentei o espaçamento entre os campos */
-    width: 90%;
+    position: relative;
 }
 
 .input-group i {
-    color: white;
-    margin-right: 10px;
+    position: absolute;
+    left: 10px;
+    color: #bbb;
 }
 
-.input-group input {
-    border: none;
-    background: transparent;
-    outline: none;
-    color: white;
-    width: 100%;
-    padding: 8px;
-}
-
-::placeholder {
-    color: rgba(255, 255, 255, 0.7);
-}
-
-/* Botão cadastrar */
-button {
-    width: 100%;
-    padding: 12px;
-    border: none;
+input {
+    flex: 1;
+    padding: 12px 10px 12px 35px; 
+    font-size: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
-    background: #ff6600;
+    background-color: #222;
     color: white;
+    transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+    border-color: #FFD700;
+    outline: none;
+}
+
+input::placeholder {
+    color: #bbb;
+}
+
+/* Botão principal */
+button {
+    padding: 12px;
     font-size: 16px;
     cursor: pointer;
-    margin-top: 15px;
+    border: none;
+    background: linear-gradient(135deg, #28a745, #218838);
+    color: white;
+    border-radius: 6px;
+    width: 100%;
+    margin-top: 20px;
+    transition: transform 0.2s, background 0.3s ease-in-out;
 }
 
 button:hover {
-    background: #cc5200;
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: scale(1.02);
 }
 
-/* Botões de ação */
+/* Botões de ações */
 .action-buttons {
-    width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     margin-top: 20px;
 }
 
 .action-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    background: #ff6600;
+    background: linear-gradient(135deg, #007bff, #0056b3);
     color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
     font-size: 16px;
     cursor: pointer;
-    width: 30%;
-}
-
-.action-btn i {
-    margin-right: 10px;
+    transition: transform 0.2s, background-color 0.3s ease-in-out;
 }
 
 .action-btn:hover {
-    background: #cc5200;
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #0056b3, #004494);
 }
 
-/* Responsividade para mobile */
-@media (max-width: 768px) {
-    .container {
-        width: 95%;
-        padding: 25px;
-    }
+/* Lista de carros */
+#lista-carros {
+    margin-top: 20px;
+}
 
-    .form-container {
-        flex-direction: column;
-    }
+.carro {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+    border-left: 3px solid #FFD700;
+    border-radius: 6px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    color: white;
+}
 
-    .input-group {
-        width: 100%;
-    }
+/* Botões dentro da lista de carros */
+.carro button {
+    margin-top: 5px;
+    padding: 6px 12px;
+    font-size: 14px;
+    border-radius: 4px;
+    transition: transform 0.2s, background 0.3s ease-in-out;
+}
 
-    .action-buttons {
-        flex-direction: column;
-        gap: 10px;
-    }
+.carro button:first-child {
+    background: linear-gradient(135deg, #ff6600, #e65c00);
+    color: white;
+    margin-right: 10px;
+}
 
-    .action-btn {
-        width: 100%;
-    }
+.carro button:first-child:hover {
+    background: linear-gradient(135deg, #e65c00, #cc5200);
+    transform: scale(1.05);
+}
+
+.carro button:last-child {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+}
+
+.carro button:last-child:hover {
+    background: linear-gradient(135deg, #c82333, #b21f2d);
+    transform: scale(1.05);
 }
