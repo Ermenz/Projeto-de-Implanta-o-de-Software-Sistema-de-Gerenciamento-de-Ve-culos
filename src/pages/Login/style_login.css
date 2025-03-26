@@ -7,6 +7,7 @@ body {
     align-items: center;
     height: 100vh;
     background: linear-gradient(135deg, #2c2c2c, #1a1a1a);
+    background: linear-gradient(to bottom, #2c2c2c 92%,  #ff6600 5%);
     font-family: Arial, sans-serif;
     margin: 0;
 }
@@ -21,7 +22,7 @@ body {
     background: #3a3a3a;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px  rgba(92, 51, 51, 0.5);
+    box-shadow:  0px 0px 20px 5px orange;
     text-align: center;
     width: 400px;
     margin-top: 40px; /* Distância do topo */
