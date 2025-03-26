@@ -12,6 +12,12 @@ function adicionarCarro() {
         return;
     }
 
+    // Verificar se o ano é um número válido
+    if (isNaN(ano) || ano <= 0) {
+        alert("Por favor, insira um ano válido!");
+        return;
+    }
+
     // Adicionar o carro no array
     carros.push({ marca, modelo, ano });
 
@@ -70,6 +76,12 @@ function atualizarCarro(index) {
     // Verificar se os campos estão preenchidos
     if (!marca || !modelo || !ano) {
         alert("Todos os campos devem ser preenchidos!");
+        return;
+    }
+
+    // Verificar se o ano é um número válido
+    if (isNaN(ano) || ano <= 0) {
+        alert("Por favor, insira um ano válido!");
         return;
     }
 
