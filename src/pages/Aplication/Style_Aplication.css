@@ -1,17 +1,31 @@
 /* Estilos gerais */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #000000, #1a1a1a, #2c2c2c); /* Gradiente preto no fundo */
+    background: url('/src/imgs/copper-icosahedron-pattern-black.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: color;
     margin: 0;
     padding: 0;
     position: relative;
 }
 
-/* Ícone de sair */
+/* Borda laranja no topo */
+.top-border {
+    width: 100%;
+    height: 10px; /* Altura da borda */
+    background-color: #ff6600; /* Cor laranja */
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+/* Ícone de sair dentro da borda */
 .exit-icon {
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: 50%; /* Centraliza verticalmente */
+    left: 20px; /* Distância da borda esquerda */
+    transform: translateY(-50%); /* Ajuste fino */
     font-size: 24px;
     color: white;
     text-decoration: none;
@@ -20,15 +34,15 @@ body {
 }
 
 .exit-icon:hover {
-    color: #ffcc00;
+    color: #fff700; /* Amarelo no hover */
 }
 
 /* Container principal */
 .container {
     max-width: 500px;
-    margin: 50px auto;
+    margin: 80px auto 50px; /* Ajustado para não sobrepor a borda */
     padding: 20px;
-    background-color: #1a1a1a; /* Tom de preto mais suave */
+    background-color: #1a1a1a; /* Preto suave */
     position: relative;
     border-radius: 10px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6);
@@ -73,7 +87,7 @@ h2 {
 
 input {
     flex: 1;
-    padding: 12px 10px 12px 35px; 
+    padding: 12px 10px 12px 35px;
     font-size: 16px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
@@ -146,34 +160,4 @@ button:hover {
     border-radius: 6px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
     color: white;
-}
-
-/* Botões dentro da lista de carros */
-.carro button {
-    margin-top: 5px;
-    padding: 6px 12px;
-    font-size: 14px;
-    border-radius: 4px;
-    transition: transform 0.2s, background 0.3s ease-in-out;
-}
-
-.carro button:first-child {
-    background: linear-gradient(135deg, #ff6600, #e65c00);
-    color: white;
-    margin-right: 10px;
-}
-
-.carro button:first-child:hover {
-    background: linear-gradient(135deg, #e65c00, #cc5200);
-    transform: scale(1.05);
-}
-
-.carro button:last-child {
-    background: linear-gradient(135deg, #dc3545, #c82333);
-    color: white;
-}
-
-.carro button:last-child:hover {
-    background: linear-gradient(135deg, #c82333, #b21f2d);
-    transform: scale(1.05);
 }
