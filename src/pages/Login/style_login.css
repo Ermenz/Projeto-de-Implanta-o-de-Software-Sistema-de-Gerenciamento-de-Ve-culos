@@ -5,7 +5,10 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(to bottom, #2c2c2c 100%);
+    background: url('/src/imgs/BackgroundLogin.png');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: color;
     font-family: Arial, sans-serif;
     margin: 0;
 }
