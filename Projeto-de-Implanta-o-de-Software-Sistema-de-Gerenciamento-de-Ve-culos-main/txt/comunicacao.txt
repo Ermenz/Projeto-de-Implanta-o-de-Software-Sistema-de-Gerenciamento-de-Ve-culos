@@ -1,0 +1,5 @@
+Vamos utilizar html,css e JavaScript e talves python. 
+Utilizaresmos mysql do próprio vscode.
+
+Criei esse arquivo para nos comunicarmos, sei que existe a possibilidade do whatsap ou no próprio commit, mas acho bom um espaço referente apenas ao trabalho. 
+Sinta-se a vontade para deixar alguma anotação, melhoria ou mudança no projeto.

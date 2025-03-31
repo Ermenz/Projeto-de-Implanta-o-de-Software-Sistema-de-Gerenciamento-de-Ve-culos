@@ -1,0 +1,148 @@
+/* Estilização geral */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, #2c2c2c 92%, #ff6600 5%);
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+.logo {
+    margin-bottom: 50px;
+    position: absolute;
+    top: 50px; /* Distância do topo para onde a imagem será posicionada */
+    width: 250px; /* Ajustado para logo maior */
+    height: auto;
+}
+
+/* Container principal do login */
+.login-container {
+    display: flex; /* Divide em duas partes */
+    width: 700px; /* Aumentado para maior largura */
+    height: 400px; /* Aumentado para maior altura */
+    border-radius: 10px;
+    box-shadow: 0px 0px 20px 5px orange;
+    overflow: hidden; /* Evita vazamentos das bordas arredondadas */
+}
+
+/* Lado esquerdo (gradiente amarelo-laranja) */
+.left-side {
+    width: 50%;
+    background: linear-gradient(to bottom, #ffcc00, #ff6600); /* Gradiente de amarelo para laranja */
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinha os itens no topo */
+    align-items: center;
+    padding: 40px;
+    position: relative; /* Para possibilitar o ajuste da posição do texto */
+}
+
+/* Ajuste do "Bem-vindo de volta" */
+.left-side p {
+    font-size: 28px; /* Aumenta o tamanho da frase */
+    font-weight: bold;
+    position: absolute; /* Coloca a frase no topo */
+    top: 20px; /* Distância do topo */
+    left: 50%; /* Centraliza horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centralizar completamente */
+}
+
+/* Lado direito (branco) */
+.right-side {
+    width: 50%;
+    background: white;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+
+/* Estilização do título */
+h2 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+/* Estilização dos inputs */
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.input-group i {
+    color: black;
+    margin-right: 10px;
+}
+
+.input-group input {
+    border: none;
+    background: transparent;
+    outline: none;
+    color: black;
+    width: 100%;
+}
+
+::placeholder {
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Botão */
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #ff6600;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #cc5200;
+}
+
+/* Links no rodapé */
+.footer-links {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: white;
+    margin: 0 10px;
+    font-size: 14px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 600px) {
+    .login-container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+    }
+
+    .left-side, .right-side {
+        width: 100%;
+        padding: 20px;
+    }
+}
